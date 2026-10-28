@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generador de Scripts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="app">
+  <div class="container">
+    <div class="app-bar">
+      <div class="logo" id="logo"></div>
+      <div>
+        <h1 class="app-title">Generador de Scripts</h1>
+        <p class="app-sub">Configuración de equipos de red para CTs</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="kbd-hint"><kbd>Ctrl</kbd>+<kbd>S</kbd> para descargar</div>
+    </div>
+    <nav class="tabs" id="tabs" role="tablist"></nav>
+  </div>
+</header>
+
+<main><div class="container" id="view"></div></main>
+
+<footer><div class="container" id="version">Generador de Scripts</div></footer>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

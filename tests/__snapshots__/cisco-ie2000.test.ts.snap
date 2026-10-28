@@ -1,0 +1,111 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`script Cisco IE-2000 > genera el script completo 1`] = `
+"version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname SW-34018
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 ENABLE
+!
+username admin password 7 PASS7
+no aaa new-model
+system mtu routing 1500
+!
+lldp run
+!
+vlan 134
+name Management
+!
+!
+vlan 34
+name TLC-CTxFO
+!
+interface Vlan134
+ no shutdown
+ description Management
+ ip address 10.100.178.70 255.255.255.128
+!
+ip default-gateway 10.100.178.126
+no ip http server
+no ip http secure-server
+ip forward-protocol nd
+!
+!
+ip domain-name pro.edenor
+no ip cef
+!
+crypto key generate rsa
+1024
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+alarm profile defaultPort
+ alarm not-operating
+ syslog not-operating
+ notifies not-operating
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description RTU
+ switchport access vlan 34
+!
+interface FastEthernet0/2
+ shutdown
+!
+interface FastEthernet0/3
+ shutdown
+!
+interface FastEthernet0/4
+ shutdown
+!
+interface GigabitEthernet0/1
+ description A CR Escobar
+ switchport trunk allowed vlan 34,134
+ switchport trunk native vlan 134
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description A SE Maschwitz (B)
+ switchport trunk allowed vlan 34,134
+ switchport trunk native vlan 134
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+!
+line con 0
+ login local
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+ntp server 192.168.142.60
+!
+snmp-server community comunidad RO
+snmp-server user user grupo v3 auth md5 AUTH priv des PRIV
+snmp-server group grupo v3 priv
+!
+do wr
+!"
+`;
